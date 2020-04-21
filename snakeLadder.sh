@@ -50,12 +50,16 @@ do
                 then
                         ladder
 	fi
-
+((diceRoll++))
 done
       if [[ $playerOnePosition  -eq 100 ]]
       then
          echo Player 1 Won
       fi
-echo $diceOutput
+
+echo Number of Times Dice Roll..$diceRoll
+
+echo position is $diceOutput
 }
 play
+
