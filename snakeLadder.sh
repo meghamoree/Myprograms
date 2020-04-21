@@ -5,21 +5,34 @@ endPosition=100
 
 function noPlay()
 {
- 	playerOnePosition=$(($playerOnePosition+0))
+
+if [[ $playerOnePosition -lt 0 ]]
+        then
+                playerOnePosition=$startPosition
+        else
+                playerOnePosition=$(($playerOnePosition+0))
+     fi
 }
 
 function snake()
 {
- 	playerOnePosition=$(($playerOnePosition-$diceOutput))
-}
 
+ if [[ $playerOnePosition -lt 0 ]]
+        then
+                playerOnePosition=$startPosition
+        else
+                playerOnePosition=$(($playerOnePosition-$diceOutput))
+        fi
+}
 function ladder()
 {
- 	playerOnePosition=$(($playerOnePosition+$diceOutput))
+ playerOnePosition=$(($playerOnePosition+$diceOutput))
 }
 
 function play()
 {
+while [[ $playerOnePosition -ne $endPosition ]]
+do
 	PlayerOnePosition=0
         diceOutput=$((RANDOM%6+1))
 
@@ -32,8 +45,13 @@ function play()
                 elif [[ $choice -eq 2 ]]
                 then
                         ladder
-             fi
+	fi
+
+done
+      if [[ $playerOnePosition  -eq 100 ]]
+      then
+         echo Player 1 Won
+      fi
 echo $diceOutput
 }
 play
-
