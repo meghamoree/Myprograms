@@ -26,9 +26,13 @@ function snake()
 }
 function ladder()
 {
+        if [[ $(($endPosition - $playerOnePosition)) -ge $diceOutput ]]
+        then
  playerOnePosition=$(($playerOnePosition+$diceOutput))
+        else
+                playerOnePosition=$(($playerOnePosition+0))
+        fi
 }
-
 function play()
 {
 while [[ $playerOnePosition -ne $endPosition ]]
